@@ -10,13 +10,15 @@
 </head>
 <body>
 
+    <!--Sidhuvud: Översta blocket som ska innehålla föreningen namn och meny till de andra sidorna-->
     <header>
         <h1>Föreningen Svampletarna</h1>
 
+        <!--Navigationsmeny: Länkarna som leder till de andra sidorna -->
         <nav>
-            <a href="index.html" class="nav.btn">Svampar</a>
-            <a href="hittade.html" class="nav.btn">Hittade svampar</a>
-            <a href="risker.html" class="nav.btn">Risker</a>
+            <a href="index.html">Svampar</a>
+            <a href="hittade.html">Hittade svampar</a>
+            <a href="risker.html">Risker</a>
         </nav>
     </header>
 
@@ -24,9 +26,11 @@
         <section>
             <h2>Hittade svampar</h2>
             <p>Här kan du se de svampar som medlemmarna har hittat.</p>
-
+            <!--Denna div kommer att innehålla de hittade svamparna
+                som kommer att sparas i localStorage-->
             <div id="found-mushrooms"></div>
 
+            <!--När användaren klickar på "clearHistory" radera allt som sparats i webbläsaren och tömmer listan-->
             <button id="clear-btn" onclick="clearHistory()">Rensa listan</button>
         </section>
     </main>
