@@ -1,0 +1,92 @@
+.siteheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #eaf5ea;
+  border-bottom: 2px solid #2e8b57;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.menu {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2e8b57;
+}
+
+.siteheader nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.siteheader nav a {
+  text-decoration: none;
+  color: #006400;
+  font-size: 1rem;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  transition:
+    color 0.3s,
+    border-bottom-color 0.3s;
+}
+
+.siteheader nav a:hover {
+  color: #1f6f46;
+  border-bottom-color: #2e8b57;
+}
+
+.siteheader img {
+  width: 40px;
+  height: 40px;
+}
+
+.siteheader span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2e8b57;
+  font-family: "Arial", sans-serif;
+}
+
+.siteheader .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    display: block;
+    /* Vi visar knappen från html på små skärmar */
+  }
+  .siteheader nav ul {
+    display: none; /*Döler länkarna som standard */
+    flex-direction: column; /* Jag lägger länkarna under varnadra kolumn */
+    position: absolute;
+    top: 100% /* placerar menyn precis under headern */;
+    left: 0;
+    width: 100%;
+    background-color: #eaf5ea;
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 2px solid #2d8b57;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+
+  .siteheader nav ul li {
+    margin-bottom: 1rem;
+    /* Vi lägger lite lyft mellan olika länkarna */
+  }
+  .siteheader nav ul.show {
+    display: flex;
+  }
+}
