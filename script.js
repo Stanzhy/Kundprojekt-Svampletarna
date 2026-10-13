@@ -4,32 +4,32 @@ const navLinks = document.getElementById("nav-links");
 const allaSvamparContainer = document.getElementById("svamp-grid");
 const egenskaperContainer = document.getElementById("risk-grid");
 
+
+
+
+
 function sparaFynd(svamp) {
 
   let hittadeSvamparna;
 
-  hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvvamparna"));
+  hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna"));
 
-  
+  if (hittadeSvamparna === null) {
+    hittadeSvamparna = [];
+  }
 
+  hittadeSvamparna.push(svamp);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  localStorage.setItem("hittadeSvamparna", JSON.stringify(hittadeSvamparna));
 
   console.log(`Fynd sparat: ${svamp.svenskt_namn}`);
 }
+
+
+
+
+
+
 
 function createSvampKort(svamp, container) {
   const article = document.createElement("article");
