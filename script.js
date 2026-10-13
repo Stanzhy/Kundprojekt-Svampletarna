@@ -5,6 +5,29 @@ const allaSvamparContainer = document.getElementById("svamp-grid");
 const egenskaperContainer = document.getElementById("risk-grid");
 
 function sparaFynd(svamp) {
+
+  let hittadeSvamparna;
+
+  hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvvamparna"));
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   console.log(`Fynd sparat: ${svamp.svenskt_namn}`);
 }
 
