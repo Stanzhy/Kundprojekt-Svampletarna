@@ -54,9 +54,9 @@ function createSvampKort(svamp, container) {
 }
 
 function createEgenskaper(egenskap, container) {
-   const article = document.createElement("article");
-  
-   const par = document.createElement("h3");
+  const article = document.createElement("article");
+
+  const par = document.createElement("h3");
   par.textContent = egenskap.par;
   article.appendChild(par);
 
@@ -69,14 +69,14 @@ function createEgenskaper(egenskap, container) {
   article.appendChild(särskiljande);
 
   const särskiljandeList = document.createElement("ul");
-   egenskap.särskiljande.forEach((skillnad) => {
-     const li = document.createElement("li");
-     li.textContent = skillnad;
-     särskiljandeList.appendChild(li);
-   });
+  egenskap.särskiljande.forEach((skillnad) => {
+    const li = document.createElement("li");
+    li.textContent = skillnad;
+    särskiljandeList.appendChild(li);
+  });
   article.appendChild(särskiljandeList);
 
-   container.appendChild(article)
+  container.appendChild(article);
 }
 
 async function fetchData() {
@@ -99,7 +99,7 @@ async function fetchData() {
     console.log(dataEgenskaper);
 
     //skapa artikel på Risker och egenskaper
-     if (egenskaperContainer) {
+    if (egenskaperContainer) {
       dataEgenskaper.särskiljande_egenskaper.forEach((egenskap) => {
         createEgenskaper(egenskap, egenskaperContainer);
       });
@@ -117,9 +117,9 @@ async function fetchData() {
 }
 
 function init() {
-// menuBtn.addEventListener("click", () => {
-// navLinks.classList.toggle("show");
-// });
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
   fetchData();
 }
 
