@@ -1,9 +1,6 @@
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 
-menuBtn.addEventListener("click", () => {
-  navLinks.classList.toggle("show");
-});
 const allaSvamparContainer = document.getElementById("svamp-grid");
 const egenskaperContainer = document.getElementById("risk-grid");
 
@@ -13,31 +10,36 @@ function sparaFynd(svamp) {
 
 function createSvampKort(svamp, container) {
   const article = document.createElement("article");
+  article.classList.add("svamp-card");
 
   const img = document.createElement("img");
   img.src = `./img/${svamp.bild}`;
   img.alt = svamp.svenskt_namn;
   article.appendChild(img);
 
-  const namn = document.createElement("p");
+  const div = document.createElement("div");
+  div.classList.add("card-content");
+  article.appendChild(div);
+
+  const namn = document.createElement("h3");
   namn.textContent = svamp.svenskt_namn;
-  article.appendChild(namn);
+  div.appendChild(namn);
 
   const latinsktNamn = document.createElement("p");
   latinsktNamn.textContent = `Latinskt namn: ${svamp.latinskt_namn}`;
-  article.appendChild(latinsktNamn);
+  div.appendChild(latinsktNamn);
 
   const ätlig = document.createElement("p");
   ätlig.textContent = `Ätlighet: ${svamp.ätlig}`;
-  article.appendChild(ätlig);
+  div.appendChild(ätlig);
 
   const beskrivning = document.createElement("p");
   beskrivning.textContent = `Beskrivning: ${svamp.beskrivning}`;
-  article.appendChild(beskrivning);
+  div.appendChild(beskrivning);
 
   const fyndPlats = document.createElement("p");
   fyndPlats.textContent = `Fyndplats: ${svamp.fyndplats}`;
-  article.appendChild(fyndPlats);
+  div.appendChild(fyndPlats);
 
   if (allaSvamparContainer) {
     const btn = document.createElement("button");
@@ -45,10 +47,36 @@ function createSvampKort(svamp, container) {
     btn.addEventListener("click", () => {
       sparaFynd(svamp);
     });
-    article.appendChild(btn);
+    div.appendChild(btn);
   }
 
   container.appendChild(article);
+}
+
+function createEgenskaper(egenskap, container) {
+   const article = document.createElement("article");
+  
+   const par = document.createElement("h3");
+  par.textContent = egenskap.par;
+  article.appendChild(par);
+
+  const risk = document.createElement("p");
+  risk.textContent = `Risk: ${egenskap.risk}`;
+  article.appendChild(risk);
+
+  const särskiljande = document.createElement("h4");
+  särskiljande.textContent = `Särskiljande:`;
+  article.appendChild(särskiljande);
+
+  const särskiljandeList = document.createElement("ul");
+   egenskap.särskiljande.forEach((skillnad) => {
+     const li = document.createElement("li");
+     li.textContent = skillnad;
+     särskiljandeList.appendChild(li);
+   });
+  article.appendChild(särskiljandeList);
+
+   container.appendChild(article)
 }
 
 async function fetchData() {
@@ -70,10 +98,12 @@ async function fetchData() {
     const dataEgenskaper = await responceEgenskaper.json();
     console.log(dataEgenskaper);
 
-    //skapa bara en artikel på index-sidan
-    //  if (egenskaperContainer) {
-    //    createSvampKort(dataSvampar.svampar[0], egenskaperContainer);
-    //  }
+    //skapa artikel på Risker och egenskaper
+     if (egenskaperContainer) {
+      dataEgenskaper.särskiljande_egenskaper.forEach((egenskap) => {
+        createEgenskaper(egenskap, egenskaperContainer);
+      });
+    }
 
     //skapa alla svampKort på start-sidan
     if (allaSvamparContainer) {
@@ -87,6 +117,9 @@ async function fetchData() {
 }
 
 function init() {
+// menuBtn.addEventListener("click", () => {
+// navLinks.classList.toggle("show");
+// });
   fetchData();
 }
 
