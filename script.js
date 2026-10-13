@@ -5,29 +5,34 @@ const allaSvamparContainer = document.getElementById("svamp-grid");
 const egenskaperContainer = document.getElementById("risk-grid");
 
 
-
-
-
+// Skapar en sparaFynd Function
 function sparaFynd(svamp) {
 
-  let hittadeSvamparna;
+  let hittadeSvamparna; // lokal variabel undefind
 
-  hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna"));
-
+  hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna")); // Kollar om det finns något sparat på localstorage
+  // If-sats som gemför om hittadesvamparna är tom dvs igen data finns sparad iden om det inte finns skapar den en tom array.
   if (hittadeSvamparna === null) {
     hittadeSvamparna = [];
   }
 
-  hittadeSvamparna.push(svamp);
+  hittadeSvamparna.push(svamp); // svapar som väljs pushas in till array dom hanar sist i listan.
 
-  localStorage.setItem("hittadeSvamparna", JSON.stringify(hittadeSvamparna));
+  localStorage.setItem("hittadeSvamparna", JSON.stringify(hittadeSvamparna));// sparar dom valda svamparna i localstorage samt gör om dom till en sträng
 
   console.log(`Fynd sparat: ${svamp.svenskt_namn}`);
 }
 
+// skapar en ny function visafynd, svampar man väljs visas påsidan.
+function visaFynd() {
+
+  const visaSvamp = document.getElementById("found-mushrooms"); //variabel som får infon vart dom valda svamparna ska visas. 
+
+  const hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna"));
 
 
 
+}
 
 
 
@@ -144,6 +149,7 @@ function init() {
     navLinks.classList.toggle("show");
   });
   fetchData();
+  visaFynd();
 }
 
 window.onload = init;
