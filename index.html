@@ -1,65 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Svampletarna - Alla svampar</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+  </head>
+  <body>
+   
+    <header class="siteheader">
+        <a class="brand" href="index.html">
+            <img src="img/svamplogo-kantarell.png" alt="Logotyp">
+            <span> Svampar</span>
+        </a>
+      
 
-</head>
-<body>
-
-    <!--Sidhuvud: Översta blocket som ska innehålla föreningen namn och meny till de andra sidorna-->
-    <header>
-        <h1>Föreningen Svampletarna</h1>
-
-        <!--Navigationsmeny: Länkarna som leder till de andra sidorna -->
-        <nav>
-            <a href="index.html">Svampar</a>
-            <a href="hittade.html">Hittade svampar</a>
-            <a href="risker.html">Risker och egenskaper</a>
-        </nav>
+    
+      <nav class="navbar">
+        <button class="menu" id="menu-btn">=</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Svampar</li>
+            <li><a href="hittade.html">Hittade svampar</a></li>
+            <li><a href="risker.html">Risker och egenskaper</a></li>
+            </ul>
+      </nav>
     </header>
 
-    <!--Huvudinnehåll: Här är det unika huvudinnehållet till just den här sidan -->
+    
     <main>
-        <section>
-            <h2>Alla svampar</h2>
-            <p>Här kan du hitta information om alla svampar.</p>
+  <div class="intro-container">
+    <h1>Alla svampar</h1>
+    <p>Här kan du hitta information om våra svampar.</p>
+  </div>
 
-            <!--Detta är en tomm element som ska funka som 
-                kroppen till script koden-->
-            <div id="svamp-grid">
+  <!-- CSS Grid-behållaren -->
+  <section class="svamp-grid">
+    
+  
+    <article class="svamp-card">
+      <img src="img/kantarell.jpeg" alt="Kantarell bild" />
+      <div class="card-content">
+        <h3>Kantarell</h3>
+        <p><strong>Latinskt namn:</strong> <em>Cantharellus cibarius</em></p>
+        <p><strong>Beskrivning:</strong> Äggullegul trattformad svamp med nedlöpande, gaffelgrenade åsar i stället för egentliga skivor. Växer i symbios med barr- och lövträd.</p>
+        <p><strong>Ätlighet:</strong> Ätlig</p>
+        <p><strong>Fyndplats:</strong> Jönköpings kommun</p>
+        <button type="button">Jag har hittat denna</button>
+      </div>
+    </article>
 
-                <article>
-                <!--test del, för att se hur det kommer se ut-->
-                <img src="">
+    
+    <article class="svamp-card">
+      <img src="img/blekTaggsvamp.jpeg" alt="Svampexempel" />
+      <div class="card-content">
+        <h3>Kantarell</h3>
+        <p><strong>Latinskt namn:</strong> <em>Cantharellus cibarius</em></p>
+        <p><strong>Beskrivning:</strong> Äggullegul trattformad svamp med nedlöpande, gaffelgrenade åsar i stället för egentliga skivor. Växer i symbios med barr- och lövträd.</p>
+        <p><strong>Ätlighet:</strong> Ätlig</p>
+        <p><strong>Fyndplats:</strong> Jönköpings kommun</p>
+        <button type="button">Jag har hittat denna</button>
+      </div>
+    </article>
 
-                <h3>Kantarell</h3>
-
-                <p><strong>Latinskt namn:</strong>
-                    <em>Cantharellus cibarius</em>
-                </p>
-
-                <p><strong>Ätlighet:</strong> Ätlig</p>
-
-                <p><strong>Beskriving:</strong> "beskrivning": "Äggullegul trattformad svamp med nedlöpande, 
-                gaffelgrenade åsar i stället för egentliga skivor. Växer i symbios med barr- och lövträd,
-                vanlig i skogsmark från juli till oktober.","ätlig": "Ätlig – en av de mest uppskattade matsvamparna.",</p>
-
-                <p><strong>Fyndplats:</strong> Jönköpings kommun</p>
-
-                <button type="button">Jag har hittat denna</button>
-                </article>
-
-            </div>
-        </section>
-    </main>
+    
+    <article class="svamp-card">
+      <img src="img/angschampinjon.jpeg" alt="Svampexempel" />
+      <div class="card-content">
+        <h3>Kantarell</h3>
+        <p><strong>Latinskt namn:</strong> <em>Cantharellus cibarius</em></p>
+        <p><strong>Beskrivning:</strong> Äggullegul trattformad svamp med nedlöpande, gaffelgrenade åsar i stället för egentliga skivor. Växer i symbios med barr- och lövträd.</p>
+        <p><strong>Ätlighet:</strong> Ätlig</p>
+        <p><strong>Fyndplats:</strong> Jönköpings kommun</p>
+        <button type="button">Jag har hittat denna</button>
+      </div>
+    </article>
+  </section>
+</main>
 
     <!--Sidfot: Nedersta blocket som ska innehålla copyright-information -->
     <footer>
-        <p>&copy; Svampletarna 2026</p>
+      <p>&copy; Svampletarna 2026</p>
     </footer>
-</body>
+  </body>
 </html>

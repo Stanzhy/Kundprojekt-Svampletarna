@@ -1,42 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hittade svampar</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-
-</head>
-<body>
-
+  </head>
+  <body>
     <!--Sidhuvud: Översta blocket som ska innehålla föreningen namn och meny till de andra sidorna-->
-    <header>
-        <h1>Föreningen Svampletarna</h1>
+    <header class="siteheader">
+      <a class="brand" href="index.html">
+        <img src="" alt="Logotyp" />
+        <span> Svampar</span>
+      </a>
 
-        <!--Navigationsmeny: Länkarna som leder till de andra sidorna -->
-        <nav>
-            <a href="index.html">Svampar</a>
-            <a href="hittade.html">Hittade svampar</a>
-            <a href="risker.html">Risker och egenskaper</a>
-        </nav>
+      <nav class="navbar">
+        <button class="menu"></button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html">Svampar</a></li>
+          <li><a href="hittade.html">Hittade svampar</a></li>
+          <li><a href="risker.html">Risker och egenskaper</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <section>
-            <h2>Hittade svampar</h2>
-            <p>Här kan du se de svampar som medlemmarna har hittat.</p>
-            <!--Denna div kommer att innehålla de hittade svamparna
+      <section>
+        <h2>Hittade svampar</h2>
+        <p>Här kan du se de svampar som medlemmarna har hittat.</p>
+        <!--Denna div kommer att innehålla de hittade svamparna
                 som kommer att sparas i localStorage-->
-            <div id="found-mushrooms"></div>
+        <div id="found-mushrooms"></div>
 
-            <!--När användaren klickar på "clearHistory" radera allt som sparats i webbläsaren och tömmer listan-->
-            <button id="clear-btn" onclick="clearHistory()">Rensa listan</button>
-        </section>
+        <!--När användaren klickar på "clearHistory" radera allt som sparats i webbläsaren och tömmer listan-->
+        <button id="clear-btn" onclick="clearHistory()">Rensa listan</button>
+      </section>
     </main>
-    
+
     <footer>
-        <p>&copy; Svampletarna 2026</p>
-    </footer>  
-</body>
+      <p>&copy; Svampletarna 2026</p>
+    </footer>
+  </body>
 </html>
