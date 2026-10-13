@@ -3,9 +3,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #eaf5ea;
-  border-bottom: 2px solid #2e8b57;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f1ede3;
+  border-bottom: 2px solid #243e2b;
+  box-shadow: 0 2px 4px rgba(36, 62, 43, 0.08);
   position: relative;
 }
 
@@ -15,7 +15,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #2e8b57;
+  color: #243e2b;
 }
 
 .siteheader nav ul {
@@ -28,7 +28,7 @@
 
 .siteheader nav a {
   text-decoration: none;
-  color: #006400;
+  color: #243e2b;
   font-size: 1rem;
   font-weight: bold;
   border-bottom: 2px solid transparent;
@@ -38,7 +38,7 @@
 }
 
 .siteheader nav a:hover {
-  color: #1f6f46;
+  color: #b46617;
   border-bottom-color: #2e8b57;
 }
 
@@ -50,7 +50,7 @@
 .siteheader span {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #2e8b57;
+  color: #243e2b;
   font-family: "Arial", sans-serif;
 }
 
@@ -60,6 +60,81 @@
   gap: 0.5rem;
   text-decoration: none;
   color: inherit;
+}
+
+body {
+  background-color: #f7f4ed;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.intro-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0 2rem;
+  text-align: center;
+}
+
+.intro-container h1 {
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.svamp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px; /* Gör så att sidan inte blir extremt bred på stora skärmar */
+
+  margin: 0 auto;
+}
+
+.svamp-card {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fixar bilderna så att de är lika stora oavsett originalstorlek */
+.svamp-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Innehållet i kortet (padding och flexbox för att trycka ner knappen) */
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Gör så att denna del tar upp all kvarvarande plats */
+}
+
+.card-content h3 {
+  margin-top: 0;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0.3rem 0;
+}
+
+/* Knappen i botten av kortet */
+.card-content button {
+  margin-top: auto; /* Trycker knappen längst ner i kortet */
+  background-color: #3b5f42; /* Den mörkgröna färgen från din mockup */
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  align-self: flex-start; /* Gör så att knappen bara blir så bred som texten */
+}
+
+.card-content button:hover {
+  background-color: #2b4530;
 }
 
 @media (max-width: 768px) {

@@ -27,43 +27,56 @@
       </nav>
     </header>
 
-    <!--Huvudinnehåll: Här är det unika huvudinnehållet till just den här sidan -->
+    
     <main>
-      <section>
-        <h2>Alla svampar</h2>
-        <p>Här kan du hitta information om alla svampar.</p>
+  <div class="intro-container">
+    <h1>Alla svampar</h1>
+    <p>Här kan du hitta information om våra svampar.</p>
+  </div>
 
-        <!--Detta är en tomm element som ska funka som 
-                kroppen till script koden-->
-        <div id="svamp-grid">
-          <article>
-            <!--test del, för att se hur det kommer se ut-->
-            <img src="" />
+  <!-- CSS Grid-behållaren -->
+  <section class="svamp-grid">
+    
+  
+    <article class="svamp-card">
+      <img src="img/kantarell.jpeg" alt="Kantarell bild" />
+      <div class="card-content">
+        <h3>Kantarell</h3>
+        <p><strong>Latinskt namn:</strong> <em>Cantharellus cibarius</em></p>
+        <p><strong>Beskrivning:</strong> Äggullegul trattformad svamp med nedlöpande, gaffelgrenade åsar i stället för egentliga skivor. Växer i symbios med barr- och lövträd.</p>
+        <p><strong>Ätlighet:</strong> Ätlig</p>
+        <p><strong>Fyndplats:</strong> Jönköpings kommun</p>
+        <button type="button">Jag har hittat denna</button>
+      </div>
+    </article>
 
-            <h3>Kantarell</h3>
+    
+    <article class="svamp-card">
+      <img src="img/blekTaggsvamp.jpeg" alt="Svampexempel" />
+      <div class="card-content">
+        <h3>Kantarell</h3>
+        <p><strong>Latinskt namn:</strong> <em>Cantharellus cibarius</em></p>
+        <p><strong>Beskrivning:</strong> Äggullegul trattformad svamp med nedlöpande, gaffelgrenade åsar i stället för egentliga skivor. Växer i symbios med barr- och lövträd.</p>
+        <p><strong>Ätlighet:</strong> Ätlig</p>
+        <p><strong>Fyndplats:</strong> Jönköpings kommun</p>
+        <button type="button">Jag har hittat denna</button>
+      </div>
+    </article>
 
-            <p>
-              <strong>Latinskt namn:</strong>
-              <em>Cantharellus cibarius</em>
-            </p>
-
-            <p><strong>Ätlighet:</strong> Ätlig</p>
-
-            <p>
-              <strong>Beskriving:</strong> "beskrivning": "Äggullegul
-              trattformad svamp med nedlöpande, gaffelgrenade åsar i stället för
-              egentliga skivor. Växer i symbios med barr- och lövträd, vanlig i
-              skogsmark från juli till oktober.","ätlig": "Ätlig – en av de mest
-              uppskattade matsvamparna.",
-            </p>
-
-            <p><strong>Fyndplats:</strong> Jönköpings kommun</p>
-
-            <button type="button">Jag har hittat denna</button>
-          </article>
-        </div>
-      </section>
-    </main>
+    
+    <article class="svamp-card">
+      <img src="img/angschampinjon.jpeg" alt="Svampexempel" />
+      <div class="card-content">
+        <h3>Kantarell</h3>
+        <p><strong>Latinskt namn:</strong> <em>Cantharellus cibarius</em></p>
+        <p><strong>Beskrivning:</strong> Äggullegul trattformad svamp med nedlöpande, gaffelgrenade åsar i stället för egentliga skivor. Växer i symbios med barr- och lövträd.</p>
+        <p><strong>Ätlighet:</strong> Ätlig</p>
+        <p><strong>Fyndplats:</strong> Jönköpings kommun</p>
+        <button type="button">Jag har hittat denna</button>
+      </div>
+    </article>
+  </section>
+</main>
 
     <!--Sidfot: Nedersta blocket som ska innehålla copyright-information -->
     <footer>
