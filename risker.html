@@ -9,16 +9,24 @@
   </head>
   <body>
     <!--Sidhuvud: Översta blocket som ska innehålla föreningen namn och meny till de andra sidorna-->
-    <header>
-      <h1>Föreningen Svampletarna</h1>
+     <header>
+        <a class="brand" href="index.html">
+            <img src="img/svamplogo-kantarell.png" alt="Logotyp">
+            <span> Svampar</span>
+        </a>
+      
 
-      <!--Navigationsmeny: Länkarna som leder till de andra sidorna -->
-      <nav>
-        <a href="index.html">Svampar</a>
-        <a href="hittade.html">Hittade svampar</a>
-        <a href="risker.html">Risker och egenskaper</a>
+    
+      <nav class="navbar">
+        <button class="menu" id="menu-btn">=</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Svampar</li>
+            <li><a href="hittade.html">Hittade svampar</a></li>
+            <li><a href="risker.html">Risker och egenskaper</a></li>
+            </ul>
       </nav>
     </header>
+
 
     <main>
       <section>
@@ -30,9 +38,9 @@
         <div id="risk-grid"></div>
       </section>
     </main>
-
+</body>
     <footer>
       <p>&copy; Svampletarna 2026</p>
     </footer>
-  </body>
+
 </html>
