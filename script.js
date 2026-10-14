@@ -1,6 +1,8 @@
+// variabler för menyknappen och navigeringslänkarna
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 
+// variabler för container till svampkort och särskiljande egenskaper
 const allaSvamparContainer = document.getElementById("svamp-grid");
 const egenskaperContainer = document.getElementById("risk-grid");
 
@@ -45,43 +47,49 @@ function visaSvamp() {
 
 }
 
+// Skapar ett element med textinnehåll. Tar emot tag och textinnehåll som argument.
+function createElement(tag, textContent) {
+  const element = document.createElement(tag);
+  element.textContent = textContent;
+  return element;
+}
 
+// Skapar ett img element med src och alt attribut.
+function createImageElement(src, alt) {
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = alt;
+  return img;
+}
+
+// Skapar ett svampkort med information om svampen och lägger till den i rätt container. Tar emot svamp objektet och container elementet som argument.
 function createSvampKort(svamp, container) {
   const article = document.createElement("article");
   article.classList.add("svamp-card");
 
-  const img = document.createElement("img");
-  img.src = `./img/${svamp.bild}`;
-  img.alt = svamp.svenskt_namn;
+  const img = createImageElement(`./img/${svamp.bild}`, svamp.svenskt_namn);
   article.appendChild(img);
 
-  const div = document.createElement("div");
-  div.classList.add("card-content");
+  const div = createElement("div");
   article.appendChild(div);
 
-  const namn = document.createElement("h3");
-  namn.textContent = svamp.svenskt_namn;
+  const namn = createElement("h3", svamp.svenskt_namn);
   div.appendChild(namn);
 
-  const latinsktNamn = document.createElement("p");
-  latinsktNamn.textContent = `Latinskt namn: ${svamp.latinskt_namn}`;
+  const latinsktNamn = createElement("p", `Latinskt namn: ${svamp.latinskt_namn}`);
   div.appendChild(latinsktNamn);
 
-  const ätlig = document.createElement("p");
-  ätlig.textContent = `Ätlighet: ${svamp.ätlig}`;
+  const ätlig = createElement("p", `Ätlighet: ${svamp.ätlig}`);
   div.appendChild(ätlig);
 
-  const beskrivning = document.createElement("p");
-  beskrivning.textContent = `Beskrivning: ${svamp.beskrivning}`;
+  const beskrivning = createElement("p", `Beskrivning: ${svamp.beskrivning}`);
   div.appendChild(beskrivning);
 
-  const fyndPlats = document.createElement("p");
-  fyndPlats.textContent = `Fyndplats: ${svamp.fyndplats}`;
+  const fyndPlats = createElement("p", `Fyndplats: ${svamp.fyndplats}`);
   div.appendChild(fyndPlats);
 
   if (allaSvamparContainer) {
-    const btn = document.createElement("button");
-    btn.textContent = "Jag har hittat denna svamp!";
+    const btn = createElement("button", "Jag har hittat denna svamp!");
     btn.addEventListener("click", () => {
       sparaFynd(svamp);
     });
@@ -91,25 +99,22 @@ function createSvampKort(svamp, container) {
   container.appendChild(article);
 }
 
+// Skapar en element för varje särskiljande egenskap och lägger till den i rätt container. Tar emot egenskap objektet och container elementet som argument.
 function createEgenskaper(egenskap, container) {
   const article = document.createElement("article");
 
-  const par = document.createElement("h3");
-  par.textContent = egenskap.par;
+  const par = createElement("h3", egenskap.par);
   article.appendChild(par);
 
-  const risk = document.createElement("p");
-  risk.textContent = `Risk: ${egenskap.risk}`;
+  const risk = createElement("p", `Risk: ${egenskap.risk}`);
   article.appendChild(risk);
 
-  const särskiljande = document.createElement("h4");
-  särskiljande.textContent = `Särskiljande:`;
+  const särskiljande = createElement("h4", `Särskiljande:`);
   article.appendChild(särskiljande);
 
   const särskiljandeList = document.createElement("ul");
   egenskap.särskiljande.forEach((skillnad) => {
-    const li = document.createElement("li");
-    li.textContent = skillnad;
+    const li = createElement("li", skillnad);
     särskiljandeList.appendChild(li);
   });
   article.appendChild(särskiljandeList);
@@ -131,20 +136,20 @@ async function fetchData() {
     }
 
     const dataSvampar = await responceSvampar.json();
-    console.log(dataSvampar);
 
     const dataEgenskaper = await responceEgenskaper.json();
-    console.log(dataEgenskaper);
 
-    //skapa artikel på Risker och egenskaper
+    
     if (egenskaperContainer) {
+      //skapar artilel för varje särskiljande egenskap i speciellaegenskaper.json
       dataEgenskaper.särskiljande_egenskaper.forEach((egenskap) => {
         createEgenskaper(egenskap, egenskaperContainer);
       });
     }
 
-    //skapa alla svampKort på start-sidan
+    
     if (allaSvamparContainer) {
+      //skapar svampKort för alla svampar i svampar.json
       dataSvampar.svampar.forEach((svamp) => {
         createSvampKort(svamp, allaSvamparContainer);
       });
@@ -155,6 +160,7 @@ async function fetchData() {
 }
 
 function init() {
+  // Event listener för menyknappen
   menuBtn.addEventListener("click", () => {
     navLinks.classList.toggle("show");
   });
