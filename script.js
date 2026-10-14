@@ -4,9 +4,47 @@ const navLinks = document.getElementById("nav-links");
 const allaSvamparContainer = document.getElementById("svamp-grid");
 const egenskaperContainer = document.getElementById("risk-grid");
 
+
+// Skapar en sparaFynd Function
 function sparaFynd(svamp) {
-  console.log(`Fynd sparat: ${svamp.svenskt_namn}`);
+
+  let hittadeSvamparna; // lokal variabel undefind
+
+  hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna")); // Kollar om det finns något sparat på localstorage
+  // If-sats som gemför om hittadesvamparna är tom dvs igen data finns sparad iden om det inte finns skapar den en tom array.
+  if (hittadeSvamparna === null) {
+    hittadeSvamparna = [];
+  }
+
+  hittadeSvamparna.push(svamp); // svapar som väljs pushas in till array dom hanar sist i listan.
+
+  localStorage.setItem("hittadeSvamparna", JSON.stringify(hittadeSvamparna));// sparar dom valda svamparna i localstorage samt gör om dom till en sträng
+
 }
+
+
+function visaSvamp() {
+
+  const hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna"));
+
+  const visaSvampar = document.getElementById("found-mushrooms");
+
+  if (hittadeSvamparna === null) {
+    return;
+  }
+
+  if (visaSvampar === null) {
+    return;
+  }
+
+  hittadeSvamparna.forEach((svamp) => {
+
+    createSvampKort(svamp, visaSvampar);
+
+  })
+
+}
+
 
 function createSvampKort(svamp, container) {
   const article = document.createElement("article");
@@ -121,6 +159,7 @@ function init() {
     navLinks.classList.toggle("show");
   });
   fetchData();
+  visaSvamp();
 }
 
 window.onload = init;
