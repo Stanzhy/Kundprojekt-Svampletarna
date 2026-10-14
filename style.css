@@ -137,6 +137,33 @@ article img {
   background-color: #2b4530;
 }
 
+/* Risker articel test */
+.risk-grid{
+  background-color: white;
+  padding: 1rem;
+  border-left: 5px solid #b46617;
+  box-shadow: 0 4px 8px red:
+}
+
+.risk-grid h3{
+  color: darkgreen;
+}
+
+.risk-grid h4{
+  color: darkred;
+}
+
+.risk-grid li{
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.risk-grid p{
+  color: black;
+  font-weight: bold;
+}
+
+
 @media (max-width: 768px) {
   .menu {
     display: block;
