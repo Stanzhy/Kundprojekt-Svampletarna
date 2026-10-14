@@ -138,27 +138,27 @@ article img {
 }
 
 /* Risker articel test */
-#risk-grid article{
+#risk-grid article {
   background-color: white;
   width: 80%;
   max-width: 800px;
   margin: 2rem auto;
   padding: 1rem;
 }
-#risk-grid article h3{
+#risk-grid article h3 {
   color: black;
 }
 
-#risk-grid article h4{
+#risk-grid article h4 {
   color: black;
 }
 
-#risk-grid article li{
+#risk-grid article li {
   margin-bottom: 0.5rem;
   line-height: 1.4;
 }
 
-#risk-grid article p{
+#risk-grid article p {
   color: black;
   font-weight: bold;
 }
@@ -166,7 +166,13 @@ article img {
 footer {
   text-align: center;
 }
-
+#clear-btn {
+  display: block;
+  margin: 2rem auto;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: red;
+}
 @media (max-width: 768px) {
   .menu {
     display: block;
