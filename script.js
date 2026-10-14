@@ -20,7 +20,29 @@ function sparaFynd(svamp) {
 
   localStorage.setItem("hittadeSvamparna", JSON.stringify(hittadeSvamparna));// sparar dom valda svamparna i localstorage samt gör om dom till en sträng
 
-  console.log(`Fynd sparat: ${svamp.svenskt_namn}`);
+}
+
+
+function visaSvamp() {
+
+  const hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna"));
+
+  const visaSvampar = document.getElementById("found-mushrooms");
+
+  if (hittadeSvamparna === null) {
+    return;
+  }
+
+  if (visaSvampar === null) {
+    return;
+  }
+
+  hittadeSvamparna.forEach((svamp) => {
+
+    createSvampKort(svamp, visaSvampar);
+
+  })
+
 }
 
 
@@ -137,6 +159,7 @@ function init() {
     navLinks.classList.toggle("show");
   });
   fetchData();
+  visaSvamp();
 }
 
 window.onload = init;
