@@ -23,18 +23,6 @@ function sparaFynd(svamp) {
   console.log(`Fynd sparat: ${svamp.svenskt_namn}`);
 }
 
-// skapar en ny function visafynd, svampar man väljs visas påsidan.
-function visaFynd() {
-
-  const visaSvamp = document.getElementById("found-mushrooms"); //variabel som får infon vart dom valda svamparna ska visas. 
-
-  const hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna"));
-
-
-
-}
-
-
 
 function createSvampKort(svamp, container) {
   const article = document.createElement("article");
@@ -149,7 +137,6 @@ function init() {
     navLinks.classList.toggle("show");
   });
   fetchData();
-  visaFynd();
 }
 
 window.onload = init;
