@@ -137,7 +137,6 @@ article img {
   background-color: #2b4530;
 }
 
-
 /* Risker articel test */
 #risk-grid article{
   background-color: white;
@@ -164,6 +163,9 @@ article img {
   font-weight: bold;
 }
 
+footer {
+  text-align: center;
+}
 
 @media (max-width: 768px) {
   .menu {
