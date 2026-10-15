@@ -47,12 +47,22 @@ function visaSvamp() {
 
 }
 
+function rensaHistorik() {
+  localStorage.removeItem("hittadeSvamparna");
+
+  const visaSvampar = document.getElementById("found-mushrooms");
+  if (visaSvampar) {
+    visaSvampar.innerHTML = "";
+  }
+}
+
 // Skapar ett element med textinnehåll. Tar emot tag och textinnehåll som argument.
 function createElement(tag, textContent) {
   const element = document.createElement(tag);
   element.textContent = textContent;
   return element;
 }
+
 
 // Skapar ett img element med src och alt attribut.
 function createImageElement(src, alt) {
@@ -164,6 +174,12 @@ function init() {
   menuBtn.addEventListener("click", () => {
     navLinks.classList.toggle("show");
   });
+
+  const clearBtn = document.getElementById("clear-btn");
+if (clearBtn) {
+  clearBtn.addEventListener("click", rensaHistorik);
+}
+
   fetchData();
   visaSvamp();
 }
