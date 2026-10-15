@@ -146,10 +146,8 @@ async function fetchData() {
     }
 
     const dataSvampar = await responceSvampar.json();
-
     const dataEgenskaper = await responceEgenskaper.json();
 
-    
     if (egenskaperContainer) {
       //skapar artilel för varje särskiljande egenskap i speciellaegenskaper.json
       dataEgenskaper.särskiljande_egenskaper.forEach((egenskap) => {
@@ -157,13 +155,13 @@ async function fetchData() {
       });
     }
 
-    
     if (allaSvamparContainer) {
       //skapar svampKort för alla svampar i svampar.json
       dataSvampar.svampar.forEach((svamp) => {
         createSvampKort(svamp, allaSvamparContainer);
       });
     }
+    
   } catch (error) {
     console.error(error);
   }
