@@ -45,6 +45,30 @@ function visaSvamp() {
 
 }
 
+function rensaHistorik() {
+  localStorage.removeItem("hittadeSvamparna");
+
+  const visaSvampar = document.getElementById("found-mushrooms");
+  if (visaSvampar) {
+    visaSvampar.innerHTML = "";
+  }
+}
+
+function init() {
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+});
+
+const clearBtn = document.getElementById("clear-btn");
+if (clearBtn) {
+  clearBtn.addEventListener("click", rensaHistorik);
+}
+
+fetchData();
+visaSvamp();
+}
+
+window.onload = init;
 
 function createSvampKort(svamp, container) {
   const article = document.createElement("article");
