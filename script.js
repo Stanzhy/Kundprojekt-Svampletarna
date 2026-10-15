@@ -11,16 +11,29 @@ const egenskaperContainer = document.getElementById("risk-grid");
 function sparaFynd(svamp) {
 
   let hittadeSvamparna; // lokal variabel undefind
+  let finnsRedan;  // lokal variabel undefind
 
   hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna")); // Kollar om det finns något sparat på localstorage
   // If-sats som gemför om hittadesvamparna är tom dvs igen data finns sparad iden om det inte finns skapar den en tom array.
   if (hittadeSvamparna === null) {
     hittadeSvamparna = [];
   }
+  // går igenom svamparna och kollar om den redan är sparad. 
+  finnsRedan = hittadeSvamparna.find(
+    hittadSvamp => hittadSvamp.svenskt_namn === svamp.svenskt_namn
+  );
+
+  //  om variabel är true så skriver den ut alert medelandet
+  if (finnsRedan) {
+    alert("Du har redan hittat den svamp typ")
+    return
+  }
 
   hittadeSvamparna.push(svamp); // svapar som väljs pushas in till array dom hanar sist i listan.
 
   localStorage.setItem("hittadeSvamparna", JSON.stringify(hittadeSvamparna));// sparar dom valda svamparna i localstorage samt gör om dom till en sträng
+
+  alert("Sparad svamp.");// Medelande efter den har sparat svamepn.
 
 }
 
