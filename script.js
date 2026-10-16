@@ -6,58 +6,56 @@ const navLinks = document.getElementById("nav-links");
 const allaSvamparContainer = document.getElementById("svamp-grid");
 const egenskaperContainer = document.getElementById("risk-grid");
 
-
 // Skapar en sparaFynd Function
 function sparaFynd(svamp) {
-
   let hittadeSvamparna; // lokal variabel undefind
-  let finnsRedan;  // lokal variabel undefind
+  let finnsRedan; // lokal variabel undefind
 
   hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna")); // Kollar om det finns något sparat på localstorage
-  // If-sats som gemför om hittadesvamparna är tom dvs igen data finns sparad iden om det inte finns skapar den en tom array.
+  // If-sats som gemför om hittadesvamparna är tom dvs igen data finns sparad i den, om det inte finns skapar den en tom array.
   if (hittadeSvamparna === null) {
     hittadeSvamparna = [];
   }
-  // går igenom svamparna och kollar om den redan är sparad. 
+  // Går igenom svamparna och kollar om den redan är sparad.
   finnsRedan = hittadeSvamparna.find(
-    hittadSvamp => hittadSvamp.svenskt_namn === svamp.svenskt_namn
+    (hittadSvamp) => hittadSvamp.svenskt_namn === svamp.svenskt_namn,
   );
 
-  //  om variabel är true så skriver den ut alert medelandet
+  //  om if-satsen är true så skriver den ut alert meddelandet.
   if (finnsRedan) {
-    alert("Du har redan hittat den svamp typ")
-    return
-  }
-
-  hittadeSvamparna.push(svamp); // svapar som väljs pushas in till array dom hanar sist i listan.
-
-  localStorage.setItem("hittadeSvamparna", JSON.stringify(hittadeSvamparna));// sparar dom valda svamparna i localstorage samt gör om dom till en sträng
-
-  alert("Sparad svamp.");// Medelande efter den har sparat svamepn.
-
-}
-
-
-function visaSvamp() {
-
-  const hittadeSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna"));
-
-  const visaSvampar = document.getElementById("found-mushrooms");
-
-  if (hittadeSvamparna === null) {
+    alert("Du har redan hittat den svamp typ");
     return;
   }
 
+  hittadeSvamparna.push(svamp); // svamp som väljs pushas in till array, den hanmnar sist i kön.
+
+  localStorage.setItem("hittadeSvamparna", JSON.stringify(hittadeSvamparna)); // sparar dom valda svamparna i localstorage samt gör om dom till en sträng
+
+  alert("Sparad svamp."); // Meddelande skrivs ut efter att en svamp har sparats.
+}
+
+// Skapar en functiion
+function visaSvamp() {
+  // Hämtar alla sparade svamparna från localstorage och sparar värdet i kollarSvamparna.
+  const kollarSvamparna = JSON.parse(localStorage.getItem("hittadeSvamparna"));
+  // Sparar/Hittar elementet med id found-mushrooms. där ceateSvampKort ska visas.
+  const visaSvampar = document.getElementById("found-mushrooms");
+
+  // Här gemförst variabeln med null dvs om inga svampar är sparade så avslutas functionen.
+  if (kollarSvamparna === null) {
+    return;
+  }
+
+  // Kollar om elementet finns,omden inte finns avslutas functionen
   if (visaSvampar === null) {
     return;
   }
 
-  hittadeSvamparna.forEach((svamp) => {
-
+  // Går igenom all svamparna en efter en som finns i variabeln kollarSvamparna. och sparar dom i parametern svamp.
+  kollarSvamparna.forEach((svamp) => {
+    // Här körs functionen createSvampKort med parametrar svamp och visaSvampar är där dom svamparna visas dvs  i det elemetet som sparats i den variabeln.
     createSvampKort(svamp, visaSvampar);
-
-  })
-
+  });
 }
 
 function rensaHistorik() {
@@ -75,7 +73,6 @@ function createElement(tag, textContent) {
   element.textContent = textContent;
   return element;
 }
-
 
 // Skapar ett img element med src och alt attribut.
 function createImageElement(src, alt) {
@@ -100,7 +97,10 @@ function createSvampKort(svamp, container) {
   const namn = createElement("h3", svamp.svenskt_namn);
   div.appendChild(namn);
 
-  const latinsktNamn = createElement("p", `Latinskt namn: ${svamp.latinskt_namn}`);
+  const latinsktNamn = createElement(
+    "p",
+    `Latinskt namn: ${svamp.latinskt_namn}`,
+  );
   div.appendChild(latinsktNamn);
 
   const ätlig = createElement("p", `Ätlighet: ${svamp.ätlig}`);
@@ -175,7 +175,6 @@ async function fetchData() {
         createSvampKort(svamp, allaSvamparContainer);
       });
     }
-    
   } catch (error) {
     console.error(error);
   }
@@ -188,9 +187,9 @@ function init() {
   });
 
   const clearBtn = document.getElementById("clear-btn");
-if (clearBtn) {
-  clearBtn.addEventListener("click", rensaHistorik);
-}
+  if (clearBtn) {
+    clearBtn.addEventListener("click", rensaHistorik);
+  }
 
   fetchData();
   visaSvamp();
