@@ -148,8 +148,8 @@ function createEgenskaper(egenskap, container) {
 
 async function fetchData() {
   try {
-    const responceSvampar = await fetch("svampar.json");
-    const responceEgenskaper = await fetch("speciellaegenskaper.json");
+    const responceSvampar = await fetch("../svampar.json");
+    const responceEgenskaper = await fetch("../speciellaegenskaper.json");
 
     if (!responceSvampar.ok) {
       throw new Error("Fetch svampar is failed!");
