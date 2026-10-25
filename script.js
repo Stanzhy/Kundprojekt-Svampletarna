@@ -1,6 +1,7 @@
 // variabler för menyknappen och navigeringslänkarna
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
+const rensaListanBtn = document.getElementById("clear-btn");
 
 // variabler för container till svampkort och särskiljande egenskaper
 const allaSvamparContainer = document.getElementById("svamp-grid");
@@ -72,11 +73,11 @@ function createElement(tag, textContent) {
 }
 
 // Skapar ett img element med src och alt attribut.
-function createImageElement(src, alt) {
-  const img = document.createElement("img");
-  img.src = src;
-  img.alt = alt;
-  return img;
+function createBildElement(src, alt) {
+  const bild = document.createElement("img");
+  bild.src = src;
+  bild.alt = alt;
+  return bild;
 }
 
 // Skapar ett svampkort med information om svampen och lägger till den i rätt container. Tar emot svamp objektet och container elementet som argument.
@@ -84,8 +85,8 @@ function createSvampKort(svamp, container) {
   const article = document.createElement("article");
   article.classList.add("svamp-card");
 
-  const img = createImageElement(`./img/${svamp.bild}`, svamp.svenskt_namn);
-  article.appendChild(img);
+  const bild = createBildElement(`./img/${svamp.bild}`, svamp.svenskt_namn);
+  article.appendChild(bild);
 
   const div = createElement("div");
   div.classList.add("card-content");
@@ -122,25 +123,25 @@ function createSvampKort(svamp, container) {
 
 // Skapar en element för varje särskiljande egenskap och lägger till den i rätt container. Tar emot egenskap objektet och container elementet som argument.
 function createEgenskaper(egenskap, container) {
-  const article = document.createElement("article");
+  const artikel = document.createElement("article");
 
   const par = createElement("h3", egenskap.par);
-  article.appendChild(par);
+  artikel.appendChild(par);
 
   const risk = createElement("p", `Risk: ${egenskap.risk}`);
-  article.appendChild(risk);
+  artikel.appendChild(risk);
 
   const särskiljande = createElement("h4", `Särskiljande:`);
-  article.appendChild(särskiljande);
+  artikel.appendChild(särskiljande);
 
   const särskiljandeList = document.createElement("ul");
   egenskap.särskiljande.forEach((skillnad) => {
     const li = createElement("li", skillnad);
     särskiljandeList.appendChild(li);
   });
-  article.appendChild(särskiljandeList);
+  artikel.appendChild(särskiljandeList);
 
-  container.appendChild(article);
+  container.appendChild(artikel);
 }
 
 async function fetchData() {
@@ -183,9 +184,10 @@ function init() {
     navLinks.classList.toggle("show");
   });
 
-  const clearBtn = document.getElementById("clear-btn");
-  if (clearBtn) {
-    clearBtn.addEventListener("click", rensaHistorik);
+  if (rensaListanBtn) {
+    rensaListanBtn.addEventListener("click", () => {
+      rensaHistorik();
+    });
   }
 
   fetchData();
