@@ -2,7 +2,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   background-color: #f1ede3;
   border-bottom: 2px solid #243e2b;
   box-shadow: 0 2px 4px rgba(36, 62, 43, 0.08);
@@ -10,20 +10,36 @@ header {
 }
 
 .menu {
-  display: none;
+  display: block;
   font-size: 1.5rem;
   background: none;
   border: none;
   cursor: pointer;
   color: #243e2b;
 }
-
 header nav ul {
-  display: flex;
-  gap: 1rem;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #eaf5ea;
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 2px solid #2d8b57;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
   list-style: none;
   margin: 0;
-  padding: 0;
+}
+
+header nav ul.show {
+  display: flex;
+}
+
+header nav ul li {
+  margin-bottom: 1rem;
 }
 
 header nav a {
@@ -68,25 +84,25 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.intro-container {
+.intro {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 2rem 0 2rem;
   text-align: center;
 }
 
-.intro-container h1 {
+.intro h1 {
   margin-bottom: 0.5rem;
   text-align: center;
 }
 
-section {
+#svamp-grid,
+#found-mushrooms {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
-  padding: 2rem;
-  max-width: 1200px; /* Gör så att sidan inte blir extremt bred på stora skärmar */
-
+  padding: 1.5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -97,19 +113,17 @@ article {
   flex-direction: column;
 }
 
-/* Fixar bilderna så att de är lika stora oavsett originalstorlek */
 article img {
   width: 100%;
   height: 220px;
   object-fit: cover;
 }
 
-/* Innehållet i kortet (padding och flexbox för att trycka ner knappen) */
 .card-content {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Gör så att denna del tar upp all kvarvarande plats */
+  flex-grow: 1;
 }
 
 .card-content h3 {
@@ -122,34 +136,31 @@ article img {
   margin: 0.3rem 0;
 }
 
-/* Knappen i botten av kortet */
 .card-content button {
-  margin-top: auto; /* Trycker knappen längst ner i kortet */
-  background-color: #3b5f42; /* Den mörkgröna färgen från din mockup */
+  margin-top: auto;
+  background-color: #3b5f42;
   color: #ffffff;
   border: none;
   padding: 0.6rem 1rem;
   cursor: pointer;
-  align-self: flex-start; /* Gör så att knappen bara blir så bred som texten */
+  align-self: flex-start;
 }
 
 .card-content button:hover {
   background-color: #2b4530;
 }
 
-/* Risker articel test */
 #risk-grid article {
   background-color: white;
-  width: 80%;
+  width: 90%;
   max-width: 800px;
   margin: 2rem auto;
   padding: 1rem;
 }
-#risk-grid article h3 {
-  color: black;
-}
 
-#risk-grid article h4 {
+#risk-grid article h3,
+#risk-grid article h4,
+#risk-grid article p {
   color: black;
 }
 
@@ -159,54 +170,49 @@ article img {
 }
 
 #risk-grid article p {
-  color: black;
   font-weight: bold;
 }
 
 footer {
   text-align: center;
+  padding: 1rem;
 }
+
 #clear-btn {
   display: block;
   margin: 2rem auto;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: red;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 4px;
 }
-/* Ger div:en på hittade.html samma grid-layout som sektionen på index.html */
-#found-mushrooms {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .menu {
-    display: block;
-    /* Vi visar knappen från html på små skärmar */
+    display: none;
   }
+
   header nav ul {
-    display: none; /*Döler länkarna som standard */
-    flex-direction: column; /* Jag lägger länkarna under varnadra kolumn */
-    position: absolute;
-    top: 100% /* placerar menyn precis under headern */;
-    left: 0;
-    width: 100%;
-    background-color: #eaf5ea;
-    text-align: center;
-    padding: 1rem 0;
-    border-bottom: 2px solid #2d8b57;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 10;
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    width: auto;
+    background-color: transparent;
+    box-shadow: none;
+    border-bottom: none;
+    padding: 0;
+    gap: 1rem;
   }
 
   header nav ul li {
-    margin-bottom: 1rem;
-    /* Vi lägger lite lyft mellan olika länkarna */
+    margin-bottom: 0;
   }
-  header nav ul.show {
-    display: flex;
+
+  /* Ändra griden till flera kolumner på större skärmar */
+  #svamp-grid,
+  #found-mushrooms {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding: 2rem;
   }
 }
