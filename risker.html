@@ -3,45 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Särskilda egenskaper och risker</title>
+    <title>Svampletarna - Särskilda egenskaper och risker</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
-    <!--Sidhuvud: Översta blocket som ska innehålla föreningen namn och meny till de andra sidorna-->
-     <header>
-        <a class="brand" href="index.html">
-            <img src="img/svamplogo-kantarell.png" alt="Logotyp">
-            <span> Svampar</span>
-        </a>
-      
+    <header>
+      <a class="brand" href="index.html">
+        <img src="img/svamplogo-kantarell.png" alt="Logotyp för Svampletarna" />
+        <span>Svampar</span>
+      </a>
 
-    
-      <nav class="navbar">
-        <button class="menu" id="menu-btn">=</button>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Svampar</li>
-            <li><a href="hittade.html">Hittade svampar</a></li>
-            <li><a href="risker.html">Risker och egenskaper</a></li>
-            </ul>
+      <nav aria-label="Huvudmeny">
+        <button class="menu" id="menu-btn" aria-label="Öppna meny">=</button>
+        <ul id="nav-links">
+          <li><a href="index.html">Svampar</a></li>
+          <li><a href="hittade.html">Hittade svampar</a></li>
+          <li><a href="risker.html">Risker och egenskaper</a></li>
+        </ul>
       </nav>
     </header>
 
-
     <main>
-      
-      <div class="intro-container">
-        <h2>Särskilda egenskaper och risker</h2>
+      <section class="intro">
+        <h1>Särskilda egenskaper och risker</h1>
+        <p>Här kan du läsa om särskiljande egenskaper och risker.</p>
+      </section>
 
-      </div>
-        <!--Detta är en tomm element som ska funka som 
-                kroppen till script koden-->
-        <div id="risk-grid"></div>
-    
+      <section
+        id="risk-grid"
+        aria-label="Risker och egenskaper lista"
+      ></section>
     </main>
-</body>
+
     <footer>
       <p>&copy; Svampletarna 2026</p>
     </footer>
-
+  </body>
 </html>
