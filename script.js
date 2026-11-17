@@ -92,7 +92,7 @@ function createSvampKort(svamp, container) {
   div.classList.add("card-content");
   article.appendChild(div);
 
-  const namn = createElement("h3", svamp.svenskt_namn);
+  const namn = createElement("h2", svamp.svenskt_namn);
   div.appendChild(namn);
 
   const latinsktNamn = createElement(
